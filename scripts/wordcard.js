@@ -21,11 +21,11 @@ function UpdateCard(curr){
     }
     document.getElementById("strokeorder").onclick = function () {
         document.getElementById('strokeorder-box').style.display = "block";
-        document.getElementById("strokeorder-video").src = '/TianTian/content/strokeorder/'+curr.Chinese+'.gif'
+        document.getElementById("strokeorder-video").src = '/TianTian/content/strokeorder/' + curr.Stroke_Order;
         setTimeout(function(){
             document.getElementById('strokeorder-box').style.display = "None";
             document.getElementById("strokeorder-video").src = ''    
-        }, 10000);
+        }, 10000*curr.Chinese.length);
     }
 }
 
