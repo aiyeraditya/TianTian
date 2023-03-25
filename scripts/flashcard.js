@@ -104,7 +104,7 @@ function updateBack(i){
 
     chinese_small.innerHTML=dataset[i].Chinese;
     pinyin.innerHTML=dataset[i].Pinyin;
-    meaning.innerHTML=`Meaning: ${dataset[i].Meaning}`;
+    meaning.innerHTML=`Meaning: ${dataset[i].English}`;
     chinese_sentence.innerHTML=dataset[i].Sentence;
     pinyin_sentence.innerHTML=dataset[i].Sentence_Pinyin;
     english_sentence.innerHTML=dataset[i].Sentence_English;

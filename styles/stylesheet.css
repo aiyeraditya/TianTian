@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Xiao Lai SC';
-    src: url('../styles/XiaolaiSC-Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+    src: url('XiaolaiSC-Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }  
 
 
@@ -741,20 +741,18 @@ color: #000000;
 
 .english-sentence{
   position: absolute;
-  width: 310px;
+  width: 360px;
   height: 60px;
-  left: 15px;
   top: 482px;
-
   font-family: 'Circular Std';
   font-style: normal;
   font-weight: 450;
   font-size: 24px;
   line-height: 30px;
-  text-align: left;
-
+  text-align: center;
   color: #000000;
 }
+
 .learnword-wrong{
   position: absolute;
   width: 72px;

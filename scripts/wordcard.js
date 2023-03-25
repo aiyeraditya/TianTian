@@ -2,7 +2,6 @@ const fontsize_options = ['', '220px', '150px', '100px'];
 
 d3.tsv("../content/test.tsv", function(data){
     var curr = GetCurrentWord(data);
-    console.log(curr);
     const wordchinese = document.getElementById("wordcard-chinese");
     const wordcard = document.getElementById("wordcard")
     wordchinese.innerHTML = curr.Chinese;
@@ -22,11 +21,11 @@ function UpdateCard(curr){
     }
     document.getElementById("strokeorder").onclick = function () {
         document.getElementById('strokeorder-box').style.display = "block";
-        document.getElementById("strokeorder-video").src = '/TianTian/content/strokeorder/1.gif'
+        document.getElementById("strokeorder-video").src = '/TianTian/content/strokeorder/'+curr.Chinese+'.gif'
         setTimeout(function(){
             document.getElementById('strokeorder-box').style.display = "None";
             document.getElementById("strokeorder-video").src = ''    
-        }, 6000);
+        }, 10000);
     }
 }
 
