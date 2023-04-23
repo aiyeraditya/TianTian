@@ -1,4 +1,4 @@
-d3.tsv("../content/test.tsv", function (d) {
+d3.tsv("../content/medical.tsv", function (d) {
     for (var i=1; i < d.length; i++) {
         process(d[i])
     }
@@ -23,6 +23,16 @@ function process(d){
         iDiv_english.id = `${d.Chinese}english`;
         iDiv_english.className = 'word-box-english';
         iDiv_english.appendChild(content)
+
+        if (content.length > 8) {
+            iDiv_english.style.fontSize = "30px";
+            iDiv_english.style.marginTop =  "6px";
+        }
+        else{
+            iDiv_english.style.fontSize = "40px"
+            iDiv_english.style.marginTop =  "12px";
+        }
+
         iDiv.appendChild(iDiv_english)
         const word = d.Chinese;
         iDiv.addEventListener('click',()=>{

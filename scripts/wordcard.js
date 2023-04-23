@@ -1,6 +1,6 @@
 const fontsize_options = ['', '220px', '150px', '100px'];
 
-d3.tsv("../content/test.tsv", function(data){
+d3.tsv("../content/medical.tsv", function(data){
     var curr = GetCurrentWord(data);
     const wordchinese = document.getElementById("wordcard-chinese");
     const wordcard = document.getElementById("wordcard")
@@ -11,22 +11,8 @@ d3.tsv("../content/test.tsv", function(data){
 
 function UpdateCard(curr){
     document.getElementById("wordcard-pinyin").innerHTML = curr.Pinyin;
-    document.getElementById("wordcard-meaning").innerHTML = `Meaning:  ${curr.English}`;
-    document.getElementById('wordcard-sentence-chinese').innerHTML = curr.Sentence;
-    document.getElementById('wordcard-sentence-pinyin').innerHTML = curr.Sentence_Pinyin;
-    document.getElementById('wordcard-sentence-english').innerHTML = curr.Sentence_English;
+    document.getElementById("wordcard-meaning").innerHTML = `Meaning: <br> ${curr.English}`;
 
-    document.getElementById("wordcard-audio").onclick = function () {
-        new Audio(`/TianTian/content/audio_files/${curr.Audio}`).play();
-    }
-    document.getElementById("strokeorder").onclick = function () {
-        document.getElementById('strokeorder-box').style.display = "block";
-        document.getElementById("strokeorder-video").src = '/TianTian/content/strokeorder/' + curr.Stroke_Order;
-        setTimeout(function(){
-            document.getElementById('strokeorder-box').style.display = "None";
-            document.getElementById("strokeorder-video").src = ''    
-        }, 10000*curr.Chinese.length);
-    }
 }
 
 function GetURLParameter(sParam)

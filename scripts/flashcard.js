@@ -4,7 +4,7 @@ var prev = [];
 var word_status = [];
 const nwords = parseInt(GetURLParameter('nwords'));
 const word_box = document.getElementById("learnword-box");
-d3.tsv("../content/test.tsv", function(data){
+d3.tsv("../content/medical.tsv", function(data){
    dataset=d3.shuffle(data);
    update(0);
    });
@@ -17,9 +17,6 @@ var chinese_large = document.getElementById('chinese-text');
 var chinese_small = document.getElementById('chinese-text-small');
 var pinyin = document.getElementById('pinyin-text-small');
 var meaning = document.getElementById('english-meaning-small');
-var chinese_sentence = document.getElementById('chinese-sentence');
-var pinyin_sentence = document.getElementById('pinyin-sentence');
-var english_sentence = document.getElementById('english-sentence');
 
 
 function Unflip() {
@@ -101,13 +98,14 @@ function updateBack(i){
     } else if (dataset[i].Chinese.length == 3) {
         chinese_small.style.fontSize = "100px";
     }
+    else if (dataset[i].Chinese.length == 4) {
+        chinese_small.style.fontSize = "120px";
+    }
+
 
     chinese_small.innerHTML=dataset[i].Chinese;
     pinyin.innerHTML=dataset[i].Pinyin;
-    meaning.innerHTML=`Meaning: ${dataset[i].English}`;
-    chinese_sentence.innerHTML=dataset[i].Sentence;
-    pinyin_sentence.innerHTML=dataset[i].Sentence_Pinyin;
-    english_sentence.innerHTML=dataset[i].Sentence_English;
+    meaning.innerHTML=`Meaning:<br>${dataset[i].English}`;
 }
 
 function update(i){

@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $.ajax({
     type: "GET",
-    url: "../content/test.csv",
+    url: "../content/medical.csv",
     dataType: "text",
     success: function(data) {
       processData(data);
@@ -32,6 +32,14 @@ function processData(allText) {
     var iDiv_english = document.createElement('div');
     iDiv_english.id = `${data[0]}english`;
     iDiv_english.className = 'word-box-english';
+    if (content.length > 8) {
+      iDiv_english.style.fontSize = "30px";
+      iDiv_english.style.marginTop =  "6px";
+    }
+    else{
+      iDiv_english.style.fontSize = "40px"
+      iDiv_english.style.marginTop =  "12px";
+    }
     iDiv_english.appendChild(content)
     iDiv.appendChild(iDiv_english)
     const word = data[0];

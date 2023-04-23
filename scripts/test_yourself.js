@@ -1,5 +1,5 @@
 const timer_bar = document.getElementById('progress-bar');
-const english_text = document.getElementById('test-text');
+const chinese_text = document.getElementById('test-text');
 const option1 = document.getElementById('test-option1');
 const option2 = document.getElementById('test-option2');
 const option3 = document.getElementById('test-option3');
@@ -12,33 +12,35 @@ var shown = [];
 var numbers = [];
 var dataset;
 
-d3.tsv("../content/test.tsv", function(data){
+d3.tsv("../content/medical.tsv", function(data){
     dataset=d3.shuffle(data);
     next_choice();
     });
 
-option1.addEventListener("click", function() {
-    choice = 1;
-    process_choice();
-});
-option2.addEventListener("click", function() {
-    choice = 2;
-    process_choice();
-});
-option3.addEventListener("click", function() {
-    choice = 3;
-    process_choice();
-});
-option4.addEventListener("click", function() {
-    choice = 4;
-    process_choice();
-});
+enable_choices();
 
-timer_bar.addEventListener("animationend", () => {
-    process_choice();
-  });
+function enable_choices(){
+    option1.addEventListener("click", function() {
+        choice = 1;
+        process_choice();
+    });
+    option2.addEventListener("click", function() {
+        choice = 2;
+        process_choice();
+    });
+    option3.addEventListener("click", function() {
+        choice = 3;
+        process_choice();
+    });
+    option4.addEventListener("click", function() {
+        choice = 4;
+        process_choice();
+    });
 
-
+    timer_bar.addEventListener("animationend", () => {
+        process_choice();
+    });
+}
 
 function process_choice(){
     timer_bar.classList.add('paused')
@@ -98,10 +100,22 @@ function next_choice(){
     panda.src = "/TianTian/content/panda4.svg";
     make_random_numbers();
     console.log(numbers)
-    option1.innerHTML = dataset[numbers[0]].Chinese
-    option2.innerHTML = dataset[numbers[1]].Chinese
-    option3.innerHTML = dataset[numbers[2]].Chinese
-    option4.innerHTML = dataset[numbers[3]].Chinese
+    option1.innerHTML = dataset[numbers[0]].English
+    if (dataset[numbers[0]].English.length > 8){
+        option1.style.fontSize='20px';
+    }
+    option2.innerHTML = dataset[numbers[1]].English
+    if (dataset[numbers[1]].English.length > 8){
+        option2.style.fontSize='20px';
+    }
+    option3.innerHTML = dataset[numbers[2]].English
+    if (dataset[numbers[2]].English.length > 8){
+        option3.style.fontSize='20px';
+    }
+    option4.innerHTML = dataset[numbers[3]].English
+    if (dataset[numbers[3]].English.length > 8){
+        option4.style.fontSize='20px';
+    }
     option1.style.background = '#B5D5F2'
     option2.style.background = '#B5D5F2'
     option3.style.background = '#B5D5F2'
@@ -110,15 +124,15 @@ function next_choice(){
     correct_choice = ordering_[0] + 1
     shown.push(numbers[ordering_[0]])
     choice = 0
-    english_text.innerHTML = dataset[numbers[ordering_[0]]].English
-    if (dataset[numbers[ordering_[0]]].English.length < 5) {
-        english_text.style.fontSize = '150px'
+    chinese_text.innerHTML = dataset[numbers[ordering_[0]]].Chinese
+    if (dataset[numbers[ordering_[0]]].Chinese.length < 2) {
+        chinese_text.style.fontSize = '150px'
     }
-    else if (dataset[numbers[ordering_[0]]].English.length < 12) {
-        english_text.style.fontSize = '90px'
+    else if (dataset[numbers[ordering_[0]]].Chinese.length == 3) {
+        chinese_text.style.fontSize = '90px'
     }
-    else{
-        english_text.style.fontSize = '60px'
+    else if (dataset[numbers[ordering_[0]]].Chinese.length == 4) {
+        chinese_text.style.fontSize = '70px'
     }
     
     timer_bar.classList.remove('paused')

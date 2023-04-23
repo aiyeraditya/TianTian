@@ -21,7 +21,7 @@ const ctx = document.getElementById('myChart');
       ],
       datasets: [{
         label: 'Learning Stats',
-        data: [40, 10, 100],
+        data: [100, 150, 79],
         backgroundColor: [
           '#C178B1',
           '#5240BF',
