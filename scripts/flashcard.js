@@ -80,11 +80,14 @@ function updateFront(i){
 
     if(i % 3 == 0){
         word_box.style.backgroundImage = "url('/TianTian/content/flashcardmodebg1.svg')";
+        meaning.style.color = '#4A2876';
     } else if (i%3 == 1){
         word_box.style.backgroundImage = "url('/TianTian/content/flashcardmodebg2.svg')";
+        meaning.style.color = "#2D389D";
     }
     else{
         word_box.style.backgroundImage = "url('/TianTian/content/flashcardmodebg3.svg')";
+        meaning.style.color = "#404773";
 
     }
     chinese_large.innerHTML=dataset[i].Chinese;
@@ -105,7 +108,7 @@ function updateBack(i){
 
     chinese_small.innerHTML=dataset[i].Chinese;
     pinyin.innerHTML=dataset[i].Pinyin;
-    meaning.innerHTML=`Meaning:<br>${dataset[i].English}`;
+    meaning.innerHTML=dataset[i].English;
 }
 
 function update(i){

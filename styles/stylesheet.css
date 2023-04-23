@@ -424,14 +424,14 @@ line-height: 46px;
 
 .wordcard-meaning{
   position: absolute;
-  left: 20px;
+  width: 360px;
   top: 460px;
   font-family: 'Circular Std';
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 40px;
-  text-align: left;
+  text-align: center;
 
   color: #000000;
 }
@@ -717,9 +717,9 @@ color: #000000;
   
 position: absolute;
 height: 40px;
-left: 30px;
+width: 338px;
 top: 411px;
-text-align: left;
+text-align: center;
 font-family: 'Circular Std';
 font-style: normal;
 font-weight: 700;

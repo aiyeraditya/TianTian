@@ -11,8 +11,8 @@ d3.tsv("../content/medical.tsv", function(data){
 
 function UpdateCard(curr){
     document.getElementById("wordcard-pinyin").innerHTML = curr.Pinyin;
-    document.getElementById("wordcard-meaning").innerHTML = `Meaning: <br> ${curr.English}`;
-
+    document.getElementById("wordcard-meaning").innerHTML = curr.English;
+    document.getElementById("wordcard-meaning").style.color = "#4A2876";
 }
 
 function GetURLParameter(sParam)
