@@ -505,7 +505,7 @@ color: #000000;
 .flash-screen-header-english{
   position: absolute;
   left: 12px;
-  top: 96px;
+  top: 73px;
 
   font-family: 'Circular Std';
   font-style: normal;
@@ -521,7 +521,7 @@ color: #000000;
 
   position: absolute;
   left: 12px;
-  top: 126px;
+  top: 103px;
   
   font-family: 'Xiao Lai SC';
   font-size: 20px;
@@ -867,6 +867,67 @@ color: #000000;
   color: #000000;
   background: #8EA3D8;
   border-radius: 20px;
+}
+
+.learnword-redo-wrong{
+  position: absolute;
+  width: 220px;
+  height: 51px;
+  left: 85px;
+  top: 327px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+
+  color: #000000;
+  background: #8EA3D8;
+  border-radius: 20px;
+}
+
+.learnword-counter{
+  position: absolute;
+  width: 105px;
+  height: 29px;
+  left: 252px;
+  top: 77px;
+
+  background: #B6CDFA;
+  border-radius: 19px;
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  color: #5972A3;
+}
+
+.revise-flashcard{
+  position: absolute;
+  width: 122px;
+  height: 41px;
+  left: 259px;
+  top: 102px;
+
+  background: #B2B9FA;
+  border-radius: 20px;
+
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 12px;
+  align-items: center;
+  text-align: center;
+  padding-top: 8px;
+  letter-spacing: 0.03em;
+
+  color: #000000;
 }
 
 .word-list-revise{

@@ -2,10 +2,14 @@ var dataset;
 var curr = 0;
 var prev = [];
 var word_status = [];
+var repeat_ = false;
 const nwords = parseInt(GetURLParameter('nwords'));
 const word_box = document.getElementById("learnword-box");
+const count_box = document.getElementById("learnword-counter")
 d3.tsv("../content/medical.tsv", function(data){
    dataset=d3.shuffle(data);
+   dataset=dataset.filter(function(d){ return d.Status == "" });
+   dataset=dataset.slice(0,nwords);
    update(0);
    });
 
@@ -18,55 +22,27 @@ var chinese_small = document.getElementById('chinese-text-small');
 var pinyin = document.getElementById('pinyin-text-small');
 var meaning = document.getElementById('english-meaning-small');
 
-
 function Unflip() {
     front.classList.contains("is-flipped") === true ? front.classList.remove("is-flipped") : console.log('Not flipped');
     back.classList.contains("is-flipped") === true ? back.classList.remove("is-flipped") : console.log('Not flipped');
 }
 
 correct.addEventListener('click',()=>{
-    console.log('correct')
-    for (var i = curr+1;i<dataset.length;i++){
-        if (i == dataset.length - 1){
-            i = 0;
-        }
-        if (dataset[i].Status == ""){
-            dataset[i].Status = "Learnt";
-            prev.push(curr);
-            word_status.push(1);
-            curr = i;
-            break;
-        }
-    }
+    dataset[curr].Status = "Learnt"
+    curr = curr+1;
     update(curr);
-    
 })
 
 wrong.addEventListener('click',()=>{
-    console.log('incorrect')
-    for (var i = curr+1;i<dataset.length;i++){
-        if (i == dataset.length - 1){
-            i = 0;
-        }
-        if (dataset[i].Status == ""){
-            dataset[i].Status = "Incorrect";
-            prev.push(curr);
-            word_status.push(0);
-            curr = i;
-            break;
-        }
-    }
+    dataset[curr].Status = "Incorrect"
+    curr=curr+1;
     update(curr);
 })
 
 undo.addEventListener('click',()=>{
-    console.log('undo')
-    if (prev.length > 0){
-        dataset[curr].Status = "";
-        curr = prev.pop()
-        word_status.pop()
-        update(curr);
-    }
+    curr=curr-1;
+    dataset[curr].Status = "";
+    update(curr);
 })
 
 function updateFront(i){
@@ -91,6 +67,7 @@ function updateFront(i){
 
     }
     chinese_large.innerHTML=dataset[i].Chinese;
+    count_box.innerHTML=`${i+1}/${dataset.length}`
 }
 
 function updateBack(i){
@@ -104,23 +81,31 @@ function updateBack(i){
     else if (dataset[i].Chinese.length == 4) {
         chinese_small.style.fontSize = "120px";
     }
-
-
     chinese_small.innerHTML=dataset[i].Chinese;
     pinyin.innerHTML=dataset[i].Pinyin;
     meaning.style.fontSize = "45px"
     meaning.innerHTML=dataset[i].English;
 }
 
+function count_incorrect(){
+    var count_ = 0;
+    for (let i=0; i<dataset.length; i++){
+        if (dataset[i].Status=="Incorrect"){ count_+=1; }
+    }
+    return count_;
+}
+
 function update(i){
-    if(prev.length == nwords) {
-        console.log(word_status)
+    console.log(dataset)
+    if(i == dataset.length) {
+        console.log(dataset)
         removeDiv();
     }
-    updateFront(i);
-    Unflip();
-    setTimeout(function(){
-        updateBack(i);
-    }, 800);
-
+    else {
+        updateFront(i);
+        Unflip();
+        setTimeout(function(){
+            updateBack(i);
+        }, 800);
+    }
 }
