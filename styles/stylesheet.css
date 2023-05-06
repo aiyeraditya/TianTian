@@ -1214,3 +1214,287 @@ color: #000000;
   left: 21px;
   top: 422px;
 }
+
+.tutorial-panda{
+  position: absolute;
+  width: 454px;
+  height: 454px;
+  left: -32px;
+  top: 317px;
+}
+
+.tutorial-tap{
+  position: absolute;
+  width: 87px;
+  height: 35px;
+  left: 302px;
+  top: 736px;
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+}
+
+.pulse {
+  -webkit-animation: pulsate 2.5s ease-out;
+  -webkit-animation-iteration-count: infinite; 
+  opacity: 0.3;
+}
+@keyframes pulsate {
+  0% { opacity: 0.3; }
+  50% { opacity: 1.0; }
+  100% { opacity: 0.3; }
+}
+
+.haohao {
+  position: absolute;
+  width: 182px;
+  height: 66px;
+  left: 104px;
+  top: 171px;
+
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 51px;
+  letter-spacing: 0.11em;
+
+  color: #000000;
+}
+
+.welcome-tiantian{
+  position: absolute;
+  width: 180px;
+  height: 51px;
+  left: 108px;
+  top: 255px;
+
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 51px;
+
+  /* identical to box height */
+  letter-spacing: 0.11em;
+
+  color: #000000;
+}
+
+.haohao-english{
+  position: absolute;
+  width: 158px;
+  height: 25px;
+  left: 116px;
+  top: 211px;
+  font-family: 'Xiao Lai SC';
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+
+.xiangshang {
+  position: absolute;
+width: 119px;
+height: 25px;
+left: 183px;
+top: 306px;
+
+font-family: 'Xiao Lai SC';
+font-size: 24px;
+line-height: 28px;
+
+color: #000000;
+}
+
+.tutorial-tiantian{
+  position: absolute;
+  width: 88px;
+  height: 47px;
+  left: 91px;
+  top: 294px;
+
+  font-family: 'Bunch Blossoms Personal Use';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 47px;
+  color: #000000;
+}
+
+.container-tutorial {
+  height: 844px;
+  max-width:390px;
+  max-height: 844px;
+  background-color: #E2F1F3;
+  padding: 0px;
+  margin-top: 0px;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.tutorial-screen1{
+  opacity: 100;
+}
+
+.tutorial-screen2{
+  opacity: 0;
+}
+.tutorial-screen2-logo-chinese{
+  position: absolute;
+  width: 150px;
+  height: 30px;
+  left: 120px;
+  top: 209px;
+
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 3px;
+
+  color: #000000;
+}
+
+.tutorial-screen2-logo{
+  position: absolute;
+  width: 147px;
+  height: 78px;
+  left: 121px;
+  top: 249px;
+
+  font-family: 'Bunch Blossoms Personal Use';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 78px;
+
+  color: #000000;
+}
+
+.tutorial-screen3-chinese{
+position: absolute;
+width: 390px;
+height: 30px;
+top: 254px;
+text-align: center;
+font-family: 'Circular Std';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 30px;
+letter-spacing: 3px;
+
+color: #000000;
+}
+
+
+.tutorial-screen4-logo{
+  position: absolute;
+  width: 390px;
+  height: 129px;
+  top: 155px;
+  text-align: center;
+  font-family: 'Bunch Blossoms Personal Use';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 66px;
+  line-height: 129px;
+
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.tutorial-screen4-chinese{
+  position: absolute;
+  width: 390px;
+  height: 46px;
+  text-align: center;
+  top: 261px;
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 46px;
+  letter-spacing: 3px;
+  
+  color: #000000;
+}
+
+.tutorial-screen5-text{
+  position: absolute;
+  width: 390px;
+  height: 60px;
+  text-align: center;
+  padding-left: 5px;
+  top: 257px;
+  
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 3px;
+  
+  color: #000000;
+}
+
+.tutorial-box{
+  position: absolute;
+  width: 316px;
+  height: 140px;
+  left: 33px;
+  top: 201px;
+  background: #E2F1F3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 28px;
+  vertical-align: middle;
+}
+
+.tutorial-box-text{
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.arrow-home{
+  position: absolute;
+  transform: rotate(33.98deg);
+  top: 712px;
+  left: 72px;
+}
+
+.arrow-search{
+  position: absolute;
+  transform: rotate(33.98deg);
+  top: 715px;
+  left: 145px;
+}
+
+.arrow-flashcard{
+  position: absolute;
+  transform: rotate(8.49deg);
+  top: 682px;
+  left: 229px;
+}
+
+.arrow-gamemode{
+  position: absolute;
+  transform: matrix(-0.94, 0.35, 0.35, 0.94, 0, 0);
+  top: 703px;
+  left: 236px;
+}
