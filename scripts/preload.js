@@ -2,15 +2,20 @@
 var resourcesToLoad = [
     "content/panda1.svg",
     "content/panda2.svg",
-    "content/panda3.svg"
+    "content/panda5.svg",
+    "content/tutorial5.svg",
+    "content/tutorial6.svg",
+    "content/tutorial7.png",
+    "content/tutorial8.svg",
 ];
 
 // Create a function to preload the resources
 function preloadResources() {
   // Display the loading page
   var loadingPage = document.getElementById("loading");
+  var container = document.getElementById("container");
   loadingPage.style.display = "block";
-  
+  container.style.display = "none"
   // Create a counter to keep track of loaded resources
   var loadedResources = 0;
   
@@ -29,7 +34,7 @@ function preloadResources() {
         // Hide the loading page and display the website once all the resources are loaded
         if (loadedResources == resourcesToLoad.length) {
           loadingPage.style.display = "none";
-          document.body.style.display = "block";
+          container.style.display = "block"
         }
       }
     };
