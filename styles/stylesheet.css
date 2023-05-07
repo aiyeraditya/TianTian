@@ -1093,6 +1093,21 @@ font-size: 120px;
 color: #000000;
 }
 
+.test-text-pinyin{
+  position: absolute;
+  width: 390px;
+  height: 50px;
+  top: 280px;
+  text-align: center;
+  font-family: 'Xiao Lai SC';
+  font-style: normal;
+  font-weight: 100;
+  line-height: 50px;
+  font-size: 30px;
+  color: #000000;
+  display: none;
+}
+
 .test-option{
   background: #B5D5F2;
   display: flex;

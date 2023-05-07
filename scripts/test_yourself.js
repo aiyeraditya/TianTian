@@ -1,5 +1,6 @@
 const timer_bar = document.getElementById('progress-bar');
 const chinese_text = document.getElementById('test-text');
+const pinyin_text = document.getElementById('test-pinyin');
 const option1 = document.getElementById('test-option1');
 const option2 = document.getElementById('test-option2');
 const option3 = document.getElementById('test-option3');
@@ -11,6 +12,7 @@ var total_correct = 0;
 var shown = [];
 var numbers = [];
 var dataset;
+var pinyin_txt;
 
 d3.tsv("../content/medical.tsv", function(data){
     dataset=d3.shuffle(data);
@@ -18,33 +20,47 @@ d3.tsv("../content/medical.tsv", function(data){
     });
 
 enable_choices();
+timer_bar.addEventListener("animationend", () => {
+    process_choice();
+});
+
+function enable_choice1(){
+    choice = 1;
+    process_choice();
+}
+function enable_choice2(){
+    choice = 2;
+    process_choice();
+}
+function enable_choice3(){
+    choice = 3;
+    process_choice();
+}
+function enable_choice4(){
+    choice = 4;
+    process_choice();
+}
 
 function enable_choices(){
-    option1.addEventListener("click", function() {
-        choice = 1;
-        process_choice();
-    });
-    option2.addEventListener("click", function() {
-        choice = 2;
-        process_choice();
-    });
-    option3.addEventListener("click", function() {
-        choice = 3;
-        process_choice();
-    });
-    option4.addEventListener("click", function() {
-        choice = 4;
-        process_choice();
-    });
+    option1.addEventListener("click", enable_choice1);
+    option2.addEventListener("click", enable_choice2);
+    option3.addEventListener("click", enable_choice3);
+    option4.addEventListener("click", enable_choice4);
+}
 
-    timer_bar.addEventListener("animationend", () => {
-        process_choice();
-    });
+function disable_choices(){
+    option1.removeEventListener("click", enable_choice1);
+    option2.removeEventListener("click", enable_choice2);
+    option3.removeEventListener("click", enable_choice3);
+    option4.removeEventListener("click", enable_choice4);
 }
 
 function process_choice(){
     timer_bar.classList.add('paused')
+    disable_choices();
     console.log(choice)
+    pinyin_text.style.display = 'block'
+    pinyin_text.innerHTML = pinyin_txt;
     document.getElementById("test-option" + correct_choice).style.background = "#74CB7D";
     if(choice == correct_choice){
         panda.src = "/TianTian/content/panda5.svg";
@@ -89,7 +105,8 @@ function shuffle(array) {
 
 function next_choice(){
     timer_bar.classList.remove('timer-bar-animation')
-
+    enable_choices();
+    pinyin_text.style.display = 'none'
     if (shown.length == 10){
         // Remove All 
         exit_function()
@@ -125,6 +142,7 @@ function next_choice(){
     shown.push(numbers[ordering_[0]])
     choice = 0
     chinese_text.innerHTML = dataset[numbers[ordering_[0]]].Chinese
+    pinyin_txt = dataset[numbers[ordering_[0]]].Pinyin
     if (dataset[numbers[ordering_[0]]].Chinese.length < 2) {
         chinese_text.style.fontSize = '150px'
     }
