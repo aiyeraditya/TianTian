@@ -2,6 +2,8 @@
 var resourcesToLoad = [
     "content/panda1.svg",
     "content/panda2.svg",
+    "content/panda3.svg",
+    "content/panda4.svg",
     "content/panda5.svg",
     "content/tutorial5.svg",
     "content/tutorial6.svg",
