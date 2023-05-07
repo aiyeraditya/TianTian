@@ -34,6 +34,9 @@ document.getElementById('tutorial-tap').addEventListener("click", function() {
     else if (current_screen == 10){
         panda.src = "../content/panda5.svg"
     }
+    else if (current_screen == 11){
+        window.location.href = "../";
+    }
     removeFadeOut(document.getElementById(`tutorial-screen${current_screen}`), 1000);
     setTimeout(function(){
         addFadeIn(document.getElementById(`tutorial-screen${current_screen+1}`), 2000);
