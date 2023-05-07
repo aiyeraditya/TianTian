@@ -1,5 +1,8 @@
 var dataset;
 var temp_dataset;
+var ischinese;
+var ispinyin;
+var isenglish;
 
 d3.tsv("../content/medical.tsv", function(data){
   dataset = data;
@@ -56,7 +59,10 @@ function search_subset(search_word){
   }
   else{
     for (var i = 0; i < dataset.length; i++){
-      if (!(dataset[i].Chinese.includes(search_word))){
+      ischinese = dataset[i].Chinese.includes(search_word);
+      ispinyin = dataset[i].Pinyin.includes(search_word);
+      isenglish = dataset[i].English.includes(search_word);
+      if (!(ischinese || isenglish || ispinyin)){
         document.getElementById(dataset[i].Chinese).style.display = "none";
       }
       else{
