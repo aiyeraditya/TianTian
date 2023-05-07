@@ -1,12 +1,21 @@
+var dataset;
+var temp_dataset;
+
 d3.tsv("../content/medical.tsv", function(data){
+  dataset = data;
   for (var i=0; i < data.length; i++) {
-    processData_new(data[i])
+    processData(data[i])
   } 
 });
 
 const word_box = document.getElementById('word_list')
+const word_search = document.getElementById('word-search')
+word_search.addEventListener("keyup", function(){
+  console.log(this.value)
+  search_subset(this.value)
+})
 
-function processData_new(data) {
+function processData(data) {
   var iDiv = document.createElement('div');
   iDiv.id = data.Chinese
   iDiv.className = 'word-box mt-3';
@@ -37,4 +46,22 @@ function processData_new(data) {
     window.location.href = `/TianTian/wordcard/?word=${word}` ;
   })
   word_box.appendChild(iDiv);
+}
+
+function search_subset(search_word){
+  if (search_word == ""){
+    for (var i = 0; i < dataset.length; i++){
+      document.getElementById(dataset[i].Chinese).style.display = "";
+    }
+  }
+  else{
+    for (var i = 0; i < dataset.length; i++){
+      if (!(dataset[i].Chinese.includes(search_word))){
+        document.getElementById(dataset[i].Chinese).style.display = "none";
+      }
+      else{
+        document.getElementById(dataset[i].Chinese).style.display = "";
+      }
+    }
+  }
 }
