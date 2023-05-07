@@ -15,7 +15,6 @@ function preloadResources() {
   var loadingPage = document.getElementById("loading");
   var container = document.getElementById("container");
   loadingPage.style.display = "block";
-  container.style.display = "none"
   // Create a counter to keep track of loaded resources
   var loadedResources = 0;
   
@@ -34,7 +33,7 @@ function preloadResources() {
         // Hide the loading page and display the website once all the resources are loaded
         if (loadedResources == resourcesToLoad.length) {
           loadingPage.style.display = "none";
-          container.style.display = "block"
+          container.style.display = "block";
         }
       }
     };
