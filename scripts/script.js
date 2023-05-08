@@ -2,11 +2,11 @@ const front = document.getElementById('flip-card-front')
 const back = document.getElementById('flip-card-back')
 const btn = document.getElementById('wordoftheday_box')
 
+
 function handleFlip() {
   front.classList.toggle('is-flipped')
   back.classList.toggle('is-flipped')
 }
-
 btn.addEventListener('click', handleFlip)
 
 const ctx = document.getElementById('myChart');
@@ -21,7 +21,7 @@ const ctx = document.getElementById('myChart');
       ],
       datasets: [{
         label: 'Learning Stats',
-        data: [100, 150, 79],
+        data: [559, 369, 402],
         backgroundColor: [
           '#C178B1',
           '#5240BF',
@@ -41,4 +41,4 @@ const ctx = document.getElementById('myChart');
     },
   });
   Chart.overrides.doughnut.plugins.legend.display = false;
-  Chart.options.plugins.tooltip.enabled = false;
+  //Chart.options.plugins.tooltip.enabled = false;
