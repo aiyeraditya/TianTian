@@ -9,6 +9,9 @@ var resourcesToLoad = [
     "content/tutorial6.svg",
     "content/tutorial7.png",
     "content/tutorial8.svg",
+    "content/revise-words-card-bg.svg",
+    "content/incorrect-words-bg.svg",
+    "content/new-words-card-bg.svg"
 ];
 
 // Create a function to preload the resources
@@ -32,6 +35,7 @@ function preloadResources() {
         var loadingMessage = document.getElementById("loading-message");
         loadingMessage.innerHTML = "Loading resource " + loadedResources + " of " + resourcesToLoad.length;
         
+        // Perhaps the check for login and node can be done here instead
         // Hide the loading page and display the website once all the resources are loaded
         if (loadedResources == resourcesToLoad.length) {
           loadingPage.style.display = "none";
