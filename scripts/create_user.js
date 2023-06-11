@@ -38,6 +38,7 @@ function storeUserData(username, password) {
         usersRef.push(userData)
           .then(function() {
             console.log("User data stored successfully.");
+            window.location.replace('/TianTian/login/')
           })
           .catch(function(error) {
             console.error("Error storing user data: ", error);
