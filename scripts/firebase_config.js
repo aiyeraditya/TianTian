@@ -10,35 +10,40 @@ const firebaseConfig = {
 };   
 const app = firebase.initializeApp(firebaseConfig);
 
-function checkUserData(){
+function getDataRef(){
     var userKey = localStorage.getItem("tiantian-userkey");
-    app.database().ref("users/" + userKey).once("value")
-    .then(function(snapshot) {
-      if (snapshot.exists()) {
-        userData = snapshot.val();
-      } else {
-        console.log("User data not found for the given key.");
-      }
-    })
-    .catch(function(error) {
-      console.error("Error retrieving user data: ", error);
-    });
-  }
+    const dataRef = app.database().ref("users/" + userKey);
+    return dataRef;
+}
 
-  function getUserData() {
-    var userKey = localStorage.getItem("tiantian-userkey");
-    if(!userKey){
-        console.log("User key not found in localStorage");
-        window.location.replace('/TianTian/login/')
-    }
-    return new Promise(function(resolve, reject) {
-      app.database().ref("users/" + userKey).once("value")
-        .then(function(snapshot) {
-          var userData = snapshot.val();
-          resolve(userData);
-        })
-        .catch(function(error) {
-          reject(error);
-        });
+function getPropertyVal(dataRef, property_val){
+  return new Promise(function(resolve, reject) {
+    dataRef.once('value')
+    .then(function(snapshot) {
+        userData = snapshot.val();
+        resolve(userData[property_val])
+    })
+    .catch((error)=> {
+        console.error('Error retrieving data:', error);
+        reject(error);
+      });
     });
+}
+
+function getUserData() {
+  var userKey = localStorage.getItem("tiantian-userkey");
+  if(!userKey){
+      console.log("User key not found in localStorage");
+      window.location.replace('/TianTian/login/')
   }
+  return new Promise(function(resolve, reject) {
+    app.database().ref("users/" + userKey).once("value")
+      .then(function(snapshot) {
+        var userData = snapshot.val();
+        resolve(userData);
+      })
+      .catch(function(error) {
+        reject(error);
+      });
+  });
+}

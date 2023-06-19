@@ -1,17 +1,25 @@
 var dataset;
+const dataRef = getDataRef();
+var userData;
+var username;
+var password;
+var learnt_arr = [];
+var incorrect_arr = [];
+var unseen_arr = [];
+getUserData().then(function(result){
+    userData = result;
+    username = userData.username
+    password = userData.password
+    assignValues(userData);
+});
+
 var curr = 0;
 var prev = [];
 var word_status = [];
 var repeat_ = false;
 const nwords = parseInt(GetURLParameter('nwords'));
 const word_box = document.getElementById("learnword-box");
-const count_box = document.getElementById("learnword-counter")
-d3.tsv("../content/medical.tsv", function(data){
-   dataset=d3.shuffle(data);
-   dataset=dataset.filter(function(d){ return d.Status == "" });
-   dataset=dataset.slice(0,nwords);
-   update(0);
-   });
+const count_box = document.getElementById("learnword-counter");
 
 const wrong = document.getElementById('wrong');
 const undo = document.getElementById('undo');
@@ -22,28 +30,98 @@ var chinese_small = document.getElementById('chinese-text-small');
 var pinyin = document.getElementById('pinyin-text-small');
 var meaning = document.getElementById('english-meaning-small');
 
+correct.addEventListener('click',()=>{
+    dataset[curr].Status = "Learnt"
+    markLearnt(dataset[curr].Idx);
+    curr = curr+1;
+    update(curr);
+})
+wrong.addEventListener('click',()=>{
+    dataset[curr].Status = "Incorrect"
+    markIncorrect(dataset[curr].Idx);
+    curr=curr+1;
+    update(curr);
+})
+undo.addEventListener('click',()=>{
+    curr=curr-1;
+    markUnseen(dataset[curr].Idx);
+    dataset[curr].Status = "";
+    update(curr);
+})
+
+// d3.tsv("../content/medical.tsv", function(data){
+//    dataset=d3.shuffle(data);
+//    dataset=dataset.filter(function(d){ return d.Status == "" });
+//    dataset=dataset.slice(0,nwords);
+//    update(0);
+//    });
+
+
+getPropertyVal(dataRef, 'unseen')
+.then(function(result){
+    d3.tsv("../content/medical.tsv", function(data){
+        dataset = result.map(index => data[index]);
+        dataset=d3.shuffle(data);
+        dataset=dataset.slice(0,nwords);
+        update(0);
+        });
+})
+
+function assignValues(userData){
+    unseen_arr = userData.unseen;
+    if ('learnt' in userData){
+        learnt_arr = userData.learnt;
+    }
+    if ('incorrect' in userData){
+        incorrect_arr = userData.incorrect;
+    }
+}
+
+function pushData(learnt_arr, incorrect_arr, unseen_arr){
+    var userData = {
+        username: username,
+        password: password,
+        learnt: learnt_arr,
+        incorrect: incorrect_arr,
+        unseen: unseen_arr
+      }; 
+    dataRef.update(userData)
+    .then(() => {
+        console.log('Data entry updated successfully!');
+      })
+      .catch((error) => {
+        console.error('Error updating data entry:', error);
+      });
+}
+
+function markLearnt(idx_update){
+    var idx_num = parseInt(idx_update);
+    unseen_arr = unseen_arr.filter(item => item !== idx_num);
+    incorrect_arr = incorrect_arr.filter(item => item !== idx_num);
+    learnt_arr.push(idx_num)
+    pushData(learnt_arr, incorrect_arr, unseen_arr)
+}
+
+function markIncorrect(idx_update){
+    var idx_num = parseInt(idx_update);
+    unseen_arr = unseen_arr.filter(item => item !== idx_num);
+    learnt_arr = learnt_arr.filter(item => item !== idx_num);
+    incorrect_arr.push(idx_num)
+    pushData(learnt_arr, incorrect_arr, unseen_arr)
+}
+
+function markUnseen(idx_update){
+    var idx_num = parseInt(idx_update);
+    incorrect_arr = unseen_arr.filter(item => item !== idx_num);
+    learnt_arr = learnt_arr.filter(item => item !== idx_num);
+    unseen_arr.push(idx_num);
+    pushData(learnt_arr, incorrect_arr, unseen_arr)
+}
+
 function Unflip() {
     front.classList.contains("is-flipped") === true ? front.classList.remove("is-flipped") : console.log('Not flipped');
     back.classList.contains("is-flipped") === true ? back.classList.remove("is-flipped") : console.log('Not flipped');
 }
-
-correct.addEventListener('click',()=>{
-    dataset[curr].Status = "Learnt"
-    curr = curr+1;
-    update(curr);
-})
-
-wrong.addEventListener('click',()=>{
-    dataset[curr].Status = "Incorrect"
-    curr=curr+1;
-    update(curr);
-})
-
-undo.addEventListener('click',()=>{
-    curr=curr-1;
-    dataset[curr].Status = "";
-    update(curr);
-})
 
 function updateFront(i){
     if (dataset[i].Chinese.length == 1) {
