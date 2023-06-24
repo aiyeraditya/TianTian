@@ -15,7 +15,8 @@ document.getElementById("create-user").addEventListener("click", function(event)
 
   var username = document.getElementById("input-userID").value;
   var password = document.getElementById("input-pass").value;
-
+  console.log(username)
+  console.log(password)
   verifyLogin(username, password);
 });
 

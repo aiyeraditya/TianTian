@@ -1601,3 +1601,55 @@ color: #000000;
 
 color: #000000;
 }
+
+.login-background{
+  background-image: url('../content/login_background.svg')
+}
+
+.login-user{
+position: absolute;
+width: 235px;
+height: 48px;
+left: 77px;
+top: 249px;
+
+background: #A3A6B1;
+border-radius: 27px;
+}
+
+.login-input{
+  width: 70%;
+  margin: auto;
+}
+
+.login-submit {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  font-family: Circular Std; 
+  font-weight: 900; 
+  font-size: 18px;
+}
+
+.login-page{
+  position: relative;
+  top: 250px;
+}
+
+.login-text-bg{
+  background-color: #73798E;
+  border-color: #73798E;
+  border-radius: 40px 0 0 40px;
+  color: #FFFBFB;
+  text-align: center;
+  font-size: 13px;
+  font-family: Circular Std;
+  font-weight: 900; 
+  height: 100%;
+}
+
+.login-text-box{
+  background-color: #A3A6B1;
+  border-radius: 0 40px 40px 0;
+  border-color: #A3A6B1;
+  height: 100%;
+}

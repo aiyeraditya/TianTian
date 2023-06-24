@@ -13,44 +13,31 @@
 </head>
 
 <body>
-	<div class="container" id = "container">
-		<div class = "align-self-center logo_row " id="logo"> 
-			TianTian
-		</div>
-
-        <form>
-            <div class="form-group">
-              <label for="input-userID">User ID</label>
-              <input type="text" class="form-control" id="input-userID" placeholder="Enter user-ID">
-            </div>
-            <div class="form-group mt-1">
-              <label for="input-pass">PassCode</label>
-              <input type="password" class="form-control" id="input-pass" placeholder="Enter PassCode">
-            </div>
-            <button type="submit" class="btn btn-primary mt-1" id = "create-user">Login</button>
-            <br>
-            <div class="btn btn-primary mt-1" onclick= "window.location.href = '/TianTian/create-user/';">
-                New User? Register Here!
-            </div>
-          </form>
-
-        <div class = "align-self-center bottom_row">
-			<div class = "row">
-				<div class = "home-icon" onclick= "window.location.href = '/TianTian/';">
-					<img src = "../content/icon/home_line.svg" alt="Home"/>
+	<div class="container login-background" id = "container">
+		<div class = "login-page">
+			<form>
+				<div class="login-input input-group mb-3">
+					<div class="input-group-prepend" style="width: 100px;">
+						<span class="input-group-text login-text-bg">Username</span>
+					</div>
+					<input type="text" class="form-control login-text-box" id = "input-userID">
 				</div>
-
-				<div class = "search-icon" onclick= "window.location.href = '/TianTian/search/';">
-					<img src = "../content/icon/search_line.svg" alt="Search"/>
+	
+				<div class="login-input input-group mb-3">
+					<div class="input-group-prepend" style="width: 100px;">
+						<span class="input-group-text login-text-bg">Password</span>
+					</div>
+					<input type="text" class="form-control login-text-box"" id="input-pass">
 				</div>
-
-				<div class = "card-icon" onclick= "window.location.href = '/TianTian/flashcard-menu/';">
-					<img src = "../content/icon/flashcard_line.svg" alt="FlashCard"/>
+	
+				<div class = "login-submit">
+					<button type="submit" class="btn btn-primary mt-1" id = "create-user">Login</button>
 				</div>
-				<div class = "game-icon" onclick= "window.location.href = '/TianTian/game-mode/';">
-					<img src = "../content/icon/gameicon_line.svg" alt="FlashCard"/>
+				<div class = "login-submit" onclick= "window.location.href = '/TianTian/create-user/';">
+					new user? register&nbsp;<span style="color: #5972A3"> here!</span>
 				</div>
-			</div>
+	
+			</form>
 		</div>
     </div>
 
