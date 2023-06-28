@@ -14,11 +14,18 @@
 
 <body>
 	<div class="container" id = "container" style = "display: none;">
-		<div class = "align-self-center logo_row " id="logo"> 
-			TianTian
-		</div>
-		<div class = "tutorial-button" onclick= "window.location.href = '/TianTian/tutorial/';">
-			Start Tutorial
+		<div>
+			<div class = "align-self-center logo_row " id="logo">  TianTian </div>
+			<div class = "popup-button" id = "popup-button"> <i class="bi bi-person-circle"></i> </div>
+
+			<div class = "popup-modal" id = "popup-modal">
+				<div class = "tutorial-button"  onclick= "window.location.href = '/TianTian/tutorial/';">
+					Start Tutorial
+				</div>
+				<div class = "userinfo-box" id = "userinfo-box"> Username: </div>
+				<div class = "logout-box" id = "logout-box"> log out </div>
+
+			</div>
 		</div>
 
 		<div class = "rectangle_progress_box" id = "progress_box">
@@ -105,6 +112,7 @@
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="scripts/preload.js"></script>
 	<script src="scripts/script.js"></script>
+	<script src="scripts/popup_modal.js"></script>
 
 </body>
 </html>

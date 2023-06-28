@@ -70,4 +70,3 @@ function make_chart(ctx, learnt, incorrect, unseen){
   Chart.overrides.doughnut.plugins.legend.display = false;
   //Chart.options.plugins.tooltip.enabled = true;
 }
-

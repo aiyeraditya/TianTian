@@ -29,6 +29,7 @@ function verifyLogin(username, password) {
           var userData = childSnapshot.val();
           if (userData.password === password) {
             localStorage.setItem("tiantian-userkey", userKey);
+            localStorage.setItem("tiantian-username", username);
             window.location.replace('/TianTian/')
           } else {
             console.log("Invalid password!");
